@@ -78,41 +78,7 @@ See [docs](https://github.com/cagov/odi-engineering/wiki/Setting-up-a-new-headle
 http://development.sand.ca.gov.s3-website-us-west-1.amazonaws.com
 
 
-# Configuration for [odi-publishing-11ty-sandbox](https://github.com/cagov/odi-publishing-11ty-sandbox/wordpress/config/wordpress-to-github.development.json)
 
-```
- "data": {
-    "wordpress_source_url": "https://dev-sand-ca-gov.pantheonsite.io/",
-    "github_targets": [
-      {
-        "outputBranch": "development",
-        "disabled": false,
-        "PostPath": "wordpress/posts",
-        "PagePath": "wordpress/pages",
-        "MediaPath": "wordpress/media",
-        "GeneralFilePath": "wordpress/general/general.json",
-        "ExcludeProperties": [
-          "content",
-          "_links"
-        ]
-      }
-    ]
-  }
-  ```
+# Make configuration changes
 
-# Configuration for [wordpress-to-github endpoints.json](https://github.com/cagov/wordpress-to-github/blob/main/WordpressSync/endpoints.json)
-```
-"projects": [
-      {
-        "name": "development.sand",
-        "enabled": false,
-        "enabledLocal": true,
-        "GitHubTarget": {
-          "Owner": "cagov",
-          "Repo": "odi-publishing-11ty-sandbox",
-          "Branch": "development",
-          "ConfigPath": "wordpress/config/wordpress-to-github.development.json"
-        }
-      }
-    ]
-    ```
+@See @cagov/odi-publishing-test/tests/sand/README.md Step 2.
