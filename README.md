@@ -28,14 +28,14 @@ Pantheon WordPress code for [dev-sand-ca-gov.pantheonsite.io](https://dev-sand-c
         Result:
 
         ```
-origin  ssh://codeserver.dev.ceac7b01-5bdb-4089-ac7b-302c5c3c1512@codeserver.dev.ceac7b01-5bdb-4089-ac7b-302c5c3c1512.drush.in:2222/~/repository.git (fetch)
-origin  ssh://codeserver.dev.ceac7b01-5bdb-4089-ac7b-302c5c3c1512@codeserver.dev.ceac7b01-5bdb-4089-ac7b-302c5c3c1512.drush.in:2222/~/repository.git (push)
-origin  https://github.com/cagov/pantheon-mirror-sand-ca-gov.git (push)
+        origin  ssh://codeserver.dev.ceac7b01-5bdb-4089-ac7b-302c5c3c1512@codeserver.dev.ceac7b01-5bdb-4089-ac7b-302c5c3c1512.drush.in:2222/~/repository.git (fetch)
+        origin  ssh://codeserver.dev.ceac7b01-5bdb-4089-ac7b-302c5c3c1512@codeserver.dev.ceac7b01-5bdb-4089-ac7b-302c5c3c1512.drush.in:2222/~/repository.git (push)
+        origin  https://github.com/cagov/pantheon-mirror-sand-ca-gov.git (push)
         ```
 
 4. Import database and files from drought and merge code from drought. 
 
-@todo create clean installation profile instead.
+    @todo create clean installation profile instead.
 
 3. Make databse changes
 
@@ -71,7 +71,7 @@ origin  https://github.com/cagov/pantheon-mirror-sand-ca-gov.git (push)
         - Delete posts, pages, and media. 
 
 
-# AWS url 
+## AWS url 
 
 See [docs](https://github.com/cagov/odi-engineering/wiki/Setting-up-a-new-headless-site-instance#set-up-a-new-aws-bucket-and-publish-the-headless-instance-to-aws) for setup
 
