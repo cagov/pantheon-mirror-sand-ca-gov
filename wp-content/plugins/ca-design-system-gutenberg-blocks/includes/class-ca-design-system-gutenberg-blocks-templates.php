@@ -23,7 +23,7 @@ if (!defined('ABSPATH')) {
  * https://medium.com/@eudestwt/wordpress-how-to-make-available-page-templates-from-your-plugin-6a6a56846b51
  * 
  */
-class CADesignSystemGutenbergBlocks_Plugin_Templates_Loader
+class CAGOVDesignSystemHeadlessWordPress_Plugin_Templates_Loader
 {
 
     protected static $_instance = null;
@@ -184,3 +184,4 @@ class CADesignSystemGutenbergBlocks_Plugin_Templates_Loader
         return $template;
     }
 }
+

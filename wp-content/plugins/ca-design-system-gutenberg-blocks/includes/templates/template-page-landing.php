@@ -1,7 +1,8 @@
 <?php
 /*
- * Template Name: DS Page: Landing
+ * Template Name: Landing
  * Template Post Type: page
+ * Template Machine Name: landing
  */
 ?>
 
@@ -40,7 +41,7 @@ if (file_exists(get_stylesheet_directory() . '/partials/header.php')) {
                             print esc_html(the_title('<!-- Page Title--><h1 class="page-title">', '</h1>'));
                         }
 
-                        print '<div class="entry-content">';
+                        print '<div class="entry-content"> LANDING';
 
                         the_content();
 
