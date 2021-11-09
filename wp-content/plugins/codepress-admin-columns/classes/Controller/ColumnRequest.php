@@ -17,7 +17,7 @@ abstract class ColumnRequest {
 		$list_screen = AC\ListScreenTypes::instance()->get_list_screen_by_key( $request->get( 'list_screen' ) );
 
 		if ( ! $list_screen ) {
-			exit;
+			wp_die();
 		}
 
 		$column = $this->get_column( $request, $list_screen );

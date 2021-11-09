@@ -3,7 +3,6 @@
 namespace AC\Helper;
 
 use WP_Post;
-use WP_Post_Type;
 
 class Post {
 
@@ -51,15 +50,15 @@ class Post {
 	}
 
 	/**
-	 * @param string $post_type_name
+	 * @param string $post_type
 	 * @param bool   $plural
 	 *
 	 * @return bool
 	 */
-	public function get_post_type_label( $post_type_name, $plural = false ) {
-		$post_type = get_post_type_object( $post_type_name );
+	public function get_post_type_label( $post_type, $plural = false ) {
+		$post_type = get_post_type_object( $post_type );
 
-		if ( ! $post_type instanceof WP_Post_Type ) {
+		if ( ! $post_type ) {
 			return false;
 		}
 
@@ -100,16 +99,16 @@ class Post {
 	 *
 	 * @return bool|string
 	 */
-	public function get_title( $post_id ) {
-		$post = get_post( $post_id );
+	public function get_title( $post ) {
+		$post = get_post( $post );
 
-		if ( ! $post instanceof WP_Post ) {
+		if ( ! $post ) {
 			return false;
 		}
 
 		$title = $post->post_title;
 
-		if ( 'attachment' === $post->post_type ) {
+		if ( 'attachment' == $post->post_type ) {
 			$title = ac_helper()->image->get_file_name( $post->ID );
 		}
 

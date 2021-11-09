@@ -3,8 +3,8 @@
 namespace AC\Admin;
 
 use AC\Integration;
-use AC\IntegrationRepository;
 use AC\Integrations;
+use AC\PluginInformation;
 use AC\Promo;
 use AC\PromoCollection;
 use AC\View;
@@ -12,31 +12,45 @@ use AC\View;
 class Banner {
 
 	/**
-	 * @var IntegrationRepository
+	 * @var Integrations
 	 */
 	private $integrations;
 
 	public function __construct() {
-		$this->integrations = new IntegrationRepository();
+		$this->integrations = new Integrations();
 	}
 
 	/**
 	 * @return Promo|null
 	 */
 	private function get_active_promotion() {
-		return ( new PromoCollection() )->find_active();
+		$promos = new PromoCollection();
+
+		return $promos->find_active();
 	}
 
 	/**
-	 * @return Integrations
+	 * @return int
+	 */
+	private function get_discount_percentage() {
+		return 10;
+	}
+
+	/**
+	 * @return Integration[]
 	 */
 	private function get_missing_integrations() {
-		return $this->integrations->find_all( [
-			'filter' => [
-				new Integration\Filter\IsPluginActive(),
-				new Integration\Filter\IsNotActive( is_multisite(), is_network_admin() ),
-			],
-		] );
+		$missing = [];
+
+		foreach ( $this->integrations->all() as $integration ) {
+			$integration_plugin = new PluginInformation( $integration->get_basename() );
+
+			if ( $integration->is_plugin_active() && ! $integration_plugin->is_active() ) {
+				$missing[] = $integration;
+			}
+		}
+
+		return $missing;
 	}
 
 	/**
@@ -45,8 +59,8 @@ class Banner {
 	public function render() {
 		$banner = new View( [
 			'promo'        => $this->get_active_promotion(),
-			'integrations' => $this->get_missing_integrations()->all(),
-			'discount'     => 10,
+			'integrations' => $this->get_missing_integrations(),
+			'discount'     => $this->get_discount_percentage(),
 		] );
 
 		$banner->set_template( 'admin/side-banner' );

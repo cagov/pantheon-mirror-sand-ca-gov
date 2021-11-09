@@ -1,8 +1,7 @@
 <?php
 /*
- * Template Name: Announcement
+ * Template Name: DS Post: Announcement
  * Template Post Type: post
- * Template Machine Name: post
  */
 ?>
 

@@ -2,6 +2,7 @@
 
 namespace AC\Admin;
 
+use AC\Admin;
 use AC\Capabilities;
 
 class WpMenuFactory {
@@ -18,7 +19,7 @@ class WpMenuFactory {
 			__( 'Admin Columns Settings', 'codepress-admin-columns' ),
 			__( 'Admin Columns', 'codepress-admin-columns' ),
 			Capabilities::MANAGE,
-			Admin::NAME,
+			Admin\Admin::NAME,
 			null,
 			$position
 		);
@@ -33,7 +34,7 @@ class WpMenuFactory {
 			__( 'Admin Columns Settings', 'codepress-admin-columns' ),
 			__( 'Admin Columns', 'codepress-admin-columns' ),
 			Capabilities::MANAGE,
-			Admin::NAME,
+			Admin\Admin::NAME,
 			null,
 			$icon,
 			$position

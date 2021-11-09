@@ -25,7 +25,7 @@ class RequestHandler implements RequestHandlerInterface {
 			}
 		}
 
-		return $page;
+		return apply_filters( 'ac/admin/request/page', $page, $request );
 	}
 
 }

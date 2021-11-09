@@ -612,10 +612,8 @@ abstract class ListScreen {
 			$this->register_column_type( $column );
 		}
 
-		$integrations = new IntegrationRepository();
-
 		// Placeholder columns
-		foreach ( $integrations->find_all() as $integration ) {
+		foreach ( new Integrations() as $integration ) {
 			if ( ! $integration->show_placeholder( $this ) ) {
 				continue;
 			}

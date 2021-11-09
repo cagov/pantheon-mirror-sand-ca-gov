@@ -2,8 +2,6 @@
 
 namespace AC\Settings;
 
-use AC\Storage\KeyValuePair;
-
 class Option {
 
 	/**
@@ -11,21 +9,22 @@ class Option {
 	 */
 	private $name;
 
-	/**
-	 * @var GeneralOption
-	 */
-	private $storage;
-
-	public function __construct( $name, KeyValuePair $storage = null ) {
+	public function __construct( $name ) {
 		$this->name = $name;
-		$this->storage = $storage ?: new GeneralOption();
+	}
+
+	/**
+	 * @return mixed
+	 */
+	private function get_options() {
+		return get_option( General::NAME );
 	}
 
 	/**
 	 * @return bool
 	 */
 	public function is_empty() {
-		return in_array( $this->get(), [ null, false ], true );
+		return false === $this->get_options();
 	}
 
 	/**
@@ -39,43 +38,47 @@ class Option {
 	 * @return mixed
 	 */
 	public function get() {
-		$values = $this->storage->get();
+		$options = $this->get_options();
 
-		if ( ! $values || ! array_key_exists( $this->name, $values ) ) {
-			return null;
+		if ( ! $options || ! array_key_exists( $this->name, $options ) ) {
+			return false;
 		}
 
-		return $values[ $this->name ];
+		return $options[ $this->name ];
 	}
 
 	/**
 	 * @param mixed $value
 	 */
 	public function save( $value ) {
-		$values = $this->storage->get();
+		$options = $this->get_options();
 
-		if ( false === $values ) {
-			$values = [];
+		if ( false === $options ) {
+			$options = [];
 		}
 
-		$values[ $this->name ] = $value;
+		$options[ $this->name ] = $value;
 
-		$this->storage->save( $values );
+		$this->update_option( $options );
 	}
 
 	/**
 	 * @param string $name
 	 */
 	public function delete() {
-		$values = $this->storage->get();
+		$options = $this->get_options();
 
-		if ( empty( $values ) ) {
+		if ( empty( $options ) ) {
 			return;
 		}
 
-		unset( $values[ $this->name ] );
+		unset( $options[ $this->name ] );
 
-		$this->storage->save( $values );
+		$this->update_option( $options );
+	}
+
+	private function update_option( $options ) {
+		update_option( General::NAME, $options );
 	}
 
 }

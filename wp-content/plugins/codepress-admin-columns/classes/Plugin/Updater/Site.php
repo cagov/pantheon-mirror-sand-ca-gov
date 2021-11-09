@@ -2,51 +2,29 @@
 
 namespace AC\Plugin\Updater;
 
+use AC\Plugin;
 use AC\Plugin\Updater;
-use AC\Plugin\Version;
-use AC\Plugin\VersionStorage;
 
 class Site extends Updater {
 
 	/**
-	 * @var Version
+	 * @var Plugin
 	 */
-	protected $version;
+	protected $plugin;
 
 	/**
-	 * @var VersionStorage
+	 * @param Plugin $plugin
 	 */
-	private $storage;
-
-	public function __construct( $version_key, Version $version ) {
-		$this->version = $version;
-		$this->storage = new VersionStorage( (string) $version_key );
-
-		// TODO add VersionStorage for previous storage
+	public function __construct( Plugin $plugin ) {
+		$this->plugin = $plugin;
 	}
 
-	/**
-	 * @return Version
-	 */
-	public function get_stored_version() {
-		return $this->storage->get();
+	protected function update_stored_version( $version = null ) {
+		$this->plugin->update_stored_version( $version );
 	}
 
-	protected function update_stored_version( Version $version = null ) {
-		$this->storage->save( $version ?: $this->version );
-	}
-
-	public function is_new_install() {
-		global $wpdb;
-
-		if ( $this->storage->get()->is_valid() ) {
-			return false;
-		}
-
-		// Before version 3.0.5
-		$results = $wpdb->get_results( "SELECT option_id FROM $wpdb->options WHERE option_name LIKE 'cpac_options_%' LIMIT 1" );
-
-		return empty( $results );
+	protected function is_new_install() {
+		return $this->plugin->is_new_install();
 	}
 
 }

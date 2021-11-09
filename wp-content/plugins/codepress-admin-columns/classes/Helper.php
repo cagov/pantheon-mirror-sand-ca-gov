@@ -11,7 +11,6 @@ use AC;
  * @property Helper\Date     date
  * @property Helper\Image    image
  * @property Helper\Post     post
- * @property Helper\Menu     menu
  * @property Helper\Strings  string
  * @property Helper\Taxonomy taxonomy
  * @property Helper\User     user

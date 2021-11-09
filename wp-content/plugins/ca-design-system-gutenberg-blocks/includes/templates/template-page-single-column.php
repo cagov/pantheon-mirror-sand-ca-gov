@@ -1,8 +1,7 @@
 <?php
 /*
- * Template Name: Single Column
+ * Template Name: DS Page: Single Column
  * Template Post Type: page
- * Template Machine Name: single-column
  */
 ?>
 

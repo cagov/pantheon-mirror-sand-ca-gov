@@ -14,11 +14,7 @@ class Addons extends Script {
 	public function register() {
 		parent::register();
 
-		wp_localize_script( $this->handle, 'ACi18n', [
-			'plugin_installed' => __( 'The Add-on %s is activated.' ),
-		] );
-
-		$this->add_inline_variable( 'AC', [
+		wp_localize_script( $this->get_handle(), 'AC', [
 			'_ajax_nonce'      => wp_create_nonce( 'ac-ajax' ),
 			'is_network_admin' => is_network_admin(),
 		] );

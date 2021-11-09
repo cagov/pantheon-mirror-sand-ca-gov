@@ -20,12 +20,12 @@ abstract class Enqueueable {
 	protected $dependencies;
 
 	/**
-	 * @param string   $handle
+	 * @param          $handle
 	 * @param Location $location
 	 * @param array    $dependencies
 	 */
 	public function __construct( $handle, Location $location = null, array $dependencies = [] ) {
-		$this->handle = (string) $handle;
+		$this->handle = $handle;
 		$this->location = $location;
 		$this->dependencies = $dependencies;
 	}

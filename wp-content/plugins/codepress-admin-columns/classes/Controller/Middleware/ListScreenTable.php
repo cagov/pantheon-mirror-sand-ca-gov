@@ -3,7 +3,6 @@
 namespace AC\Controller\Middleware;
 
 use AC\ListScreenRepository\Filter;
-use AC\ListScreenRepository\Sort;
 use AC\ListScreenRepository\Storage;
 use AC\Middleware;
 use AC\PermissionChecker;
@@ -72,7 +71,6 @@ class ListScreenTable implements Middleware {
 
 			$list_screens = $this->storage->find_all( [
 				Storage::KEY        => $list_key,
-				Storage::ARG_SORT   => new Sort\ManualOrder(),
 				Storage::ARG_FILTER => [
 					new Filter\Permission( new PermissionChecker() ),
 				],

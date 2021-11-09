@@ -4,11 +4,14 @@ namespace AC\Transient;
 
 use AC\Storage;
 use AC\Transient;
+use Exception;
 
 class User extends Transient {
 
 	/**
-	 * @param string $key
+	 * @param $key
+	 *
+	 * @throws Exception
 	 */
 	public function __construct( $key ) {
 		parent::__construct( $key );

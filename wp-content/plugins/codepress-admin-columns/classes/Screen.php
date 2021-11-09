@@ -2,7 +2,6 @@
 
 namespace AC;
 
-use AC\Admin\RequestHandlerInterface;
 use WP_Screen;
 
 class Screen implements Registrable {
@@ -128,7 +127,7 @@ class Screen implements Registrable {
 	 */
 	public function is_admin_screen( $slug = null ) {
 		if ( null !== $slug ) {
-			return $this->is_main_admin_screen() && $slug === filter_input( INPUT_GET, RequestHandlerInterface::PARAM_TAB );
+			return $this->is_main_admin_screen() && $slug === filter_input( INPUT_GET, 'tab' );
 		}
 
 		return $this->is_main_admin_screen();
