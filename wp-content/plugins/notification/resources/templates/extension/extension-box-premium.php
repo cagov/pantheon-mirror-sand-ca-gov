@@ -6,6 +6,7 @@
  *
  * @var callable(string $var_name, string $default=): mixed $get Variable getter.
  * @var callable(string $var_name, string $default=): void $the Variable printer.
+ * @var callable(string $var_name, string $default=): void $the_esc Escaped variable printer.
  * @var BracketSpace\Notification\Dependencies\Micropackage\Templates\Template $this Template instance.
  */
 
@@ -47,7 +48,7 @@ $license = $ext['license']->get();
 	</div>
 	<form class="plugin-card-bottom" action="<?php echo esc_attr( admin_url( 'admin-post.php' ) ); ?>" method="post">
 		<input type="hidden" name="extension" value="<?php echo esc_attr( $ext['slug'] ); ?>">
-		<?php wp_nonce_field( 'activate_extension_' . $ext['slug'] ); ?>
+		<?php wp_nonce_field( 'activate_extension_' . wp_unslash( sanitize_key( $ext['slug'] ?? '' ) ) ); ?>
 		<?php if ( empty( $license ) ) : ?>
 			<input type="hidden" name="action" value="notification_activate_extension">
 			<div class="column-license"><input type="text" name="license-key" placeholder="<?php esc_attr_e( 'License key', 'notification' ); ?>" class="widefat"></div>
