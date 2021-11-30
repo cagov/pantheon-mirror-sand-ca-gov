@@ -1,0 +1,6 @@
+name: sand-ca-gov
+recipe: pantheon
+config:
+  framework: wordpress
+  site: sand-ca-gov
+  id: ceac7b01-5bdb-4089-ac7b-302c5c3c1512

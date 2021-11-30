@@ -78,7 +78,21 @@ See [docs](https://github.com/cagov/odi-engineering/wiki/Setting-up-a-new-headle
 http://development.sand.ca.gov.s3-website-us-west-1.amazonaws.com
 
 
-
 # Make configuration changes
 
 @See @cagov/odi-publishing-test/tests/sand/README.md Step 2.
+
+
+# Using Lando for local development
+
+- [Install Lando](https://docs.lando.dev/basics/installation.html) 
+
+- [Install Terminus](https://pantheon.io/docs/terminus)
+
+- [Add your Pantheon machine token locally](https://pantheon.io/docs/machine-tokens)
+
+- `lando start`
+
+- `lando pull --code=none --files=none --database=dev` 
+
+- Visit site as https://sand-ca-gov.lndo.site/
